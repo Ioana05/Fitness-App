@@ -10,7 +10,7 @@ export default (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      PlanGoal.belongsTo(models.WorkoutPlan, { foreignKey: "workout_plan_id" });
+      PlanGoal.belongsTo(models.workoutPlan, { foreignKey: "workout_plan_id" });
     }
   }
   PlanGoal.init(

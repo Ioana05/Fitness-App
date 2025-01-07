@@ -10,7 +10,7 @@ export default (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      WorkoutDay.belongsTo(models.WorkoutPlan, {
+      WorkoutDay.belongsTo(models.workoutPlan, {
         foreignKey: "workout_plan_id",
       });
       WorkoutDay.hasMany(models.PlanExercise, { foreignKey: "workout_day_id" });
