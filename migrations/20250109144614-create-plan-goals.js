@@ -6,9 +6,9 @@ module.exports = {
     await queryInterface.createTable("PlanGoals", {
       id: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
+        autoIncrement: true,
       },
       workout_plan_id: {
         type: Sequelize.INTEGER,
@@ -20,25 +20,26 @@ module.exports = {
         onDelete: "CASCADE",
       },
       name: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(255),
       },
       goal_type: {
         type: Sequelize.ENUM("weight", "measurement"),
       },
       measurement_type: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(50),
       },
       target_value: {
-        type: Sequelize.DECIMAL,
+        type: Sequelize.DECIMAL(10, 2),
       },
       initial_value: {
-        type: Sequelize.DECIMAL,
+        type: Sequelize.DECIMAL(10, 2),
       },
       deadline: {
         type: Sequelize.DATE,
       },
       status: {
         type: Sequelize.ENUM("complete", "incomplete"),
+        defaultValue: "incomplete",
       },
       createdAt: {
         allowNull: false,

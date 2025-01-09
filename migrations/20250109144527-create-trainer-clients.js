@@ -1,36 +1,38 @@
 "use strict";
+
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("workoutPlans", {
+    await queryInterface.createTable("TrainerClients", {
       id: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
+        autoIncrement: true,
       },
       trainer_id: {
         type: Sequelize.INTEGER,
         references: {
-          model: {
-            tableName: "trainers",
-          },
+          model: "Trainers",
           key: "id",
         },
+        onUpdate: "CASCADE",
+        onDelete: "CASCADE",
       },
       client_id: {
         type: Sequelize.INTEGER,
-      },
-      name: {
-        type: Sequelize.STRING,
+        references: {
+          model: "Users",
+          key: "id",
+        },
+        onUpdate: "CASCADE",
+        onDelete: "CASCADE",
       },
       start_date: {
-        type: Sequelize.STRING,
-        allowNull: true,
+        type: Sequelize.DATE,
       },
-      end_date: {
-        type: Sequelize.STRING,
-        allowNull: true,
+      sessions_remaining: {
+        type: Sequelize.INTEGER,
       },
       createdAt: {
         allowNull: false,
@@ -42,7 +44,8 @@ module.exports = {
       },
     });
   },
+
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("workoutPlans");
+    await queryInterface.dropTable("TrainerClients");
   },
 };

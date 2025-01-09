@@ -6,9 +6,9 @@ module.exports = {
     await queryInterface.createTable("PlanExercises", {
       id: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
+        autoIncrement: true,
       },
       workout_day_id: {
         type: Sequelize.INTEGER,

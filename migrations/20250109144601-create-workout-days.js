@@ -3,24 +3,27 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("Exercises", {
+    await queryInterface.createTable("WorkoutDays", {
       id: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
+        autoIncrement: true,
       },
-      name: {
-        type: Sequelize.STRING,
-        allowNull: false,
+      workout_plan_id: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "WorkoutPlans",
+          key: "id",
+        },
+        onUpdate: "CASCADE",
+        onDelete: "CASCADE",
       },
-      muscle_group: {
-        type: Sequelize.STRING,
-        allowNull: false,
+      day_number: {
+        type: Sequelize.INTEGER,
       },
-      difficulty_level: {
-        type: Sequelize.ENUM("1", "2", "3", "4", "5"),
-        allowNull: false,
+      focus_area: {
+        type: Sequelize.STRING(255),
       },
       instructions: {
         type: Sequelize.TEXT,
@@ -37,6 +40,6 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("Exercises");
+    await queryInterface.dropTable("WorkoutDays");
   },
 };

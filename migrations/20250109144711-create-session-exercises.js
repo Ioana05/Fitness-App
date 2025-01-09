@@ -1,31 +1,41 @@
 "use strict";
+
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("WorkoutSessions", {
+    await queryInterface.createTable("SessionExercises", {
       id: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
+        autoIncrement: true,
       },
-      user_id: {
+      workout_session_id: {
         type: Sequelize.INTEGER,
         references: {
-          model: {
-            tableName: "Users",
-          },
+          model: "WorkoutSessions",
           key: "id",
         },
+        onUpdate: "CASCADE",
+        onDelete: "CASCADE",
       },
-      workout_day_id: {
+      exercise_id: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Exercises",
+          key: "id",
+        },
+        onUpdate: "CASCADE",
+        onDelete: "CASCADE",
+      },
+      sets_completed: {
         type: Sequelize.INTEGER,
       },
-      date: {
-        type: Sequelize.STRING,
-      },
-      duration_minutes: {
+      reps_completed: {
         type: Sequelize.INTEGER,
+      },
+      weight: {
+        type: Sequelize.DECIMAL(10, 2),
       },
       notes: {
         type: Sequelize.TEXT,
@@ -40,7 +50,8 @@ module.exports = {
       },
     });
   },
+
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("WorkoutSessions");
+    await queryInterface.dropTable("SessionExercises");
   },
 };

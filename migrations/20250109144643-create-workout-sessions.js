@@ -1,39 +1,42 @@
 "use strict";
+
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("Trainers", {
+    await queryInterface.createTable("WorkoutSessions", {
       id: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
+        autoIncrement: true,
       },
       user_id: {
         type: Sequelize.INTEGER,
         references: {
-          model: {
-            tableName: "Users",
-          },
+          model: "Users",
           key: "id",
         },
+        onUpdate: "CASCADE",
+        onDelete: "CASCADE",
       },
-      specialization: {
-        type: Sequelize.TEXT,
-        allowNull: true,
-      },
-      years_experience: {
+      workout_day_id: {
         type: Sequelize.INTEGER,
+        references: {
+          model: "WorkoutDays",
+          key: "id",
+        },
+        onUpdate: "CASCADE",
+        onDelete: "SET NULL",
         allowNull: true,
       },
-      hourly_rate: {
-        type: Sequelize.FLOAT,
-        allowNull: true,
+      date: {
+        type: Sequelize.DATE,
       },
-      availability: {
-        type: Sequelize.ENUM,
-        values: ["MALE", "FEMALE"],
-        allowNull: true,
+      duration_minutes: {
+        type: Sequelize.INTEGER,
+      },
+      notes: {
+        type: Sequelize.TEXT,
       },
       createdAt: {
         allowNull: false,
@@ -45,7 +48,8 @@ module.exports = {
       },
     });
   },
+
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("trainers");
+    await queryInterface.dropTable("WorkoutSessions");
   },
 };
