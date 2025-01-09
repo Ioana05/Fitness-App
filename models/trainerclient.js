@@ -1,7 +1,7 @@
 "use strict";
 import { Model } from "sequelize";
 export default (sequelize, DataTypes) => {
-  class Trainer extends Model {
+  class TrainerClient extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -9,22 +9,20 @@ export default (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Trainer.belongsTo(models.User, { foreignKey: "user_id" });
-      // Trainer.hasMany(models.workoutPlan);
+      models.TrainerClient
     }
   }
-  Trainer.init(
+  TrainerClient.init(
     {
-      // user_id: DataTypes.INTEGER,
-      specialization: DataTypes.TEXT,
-      // years_experience: DataTypes.INTEGER,
-      // hourly_rate: DataTypes.FLOAT,
-      // availability: DataTypes.TEXT,
+      trainer_id: DataTypes.INTEGER,
+      client_id: DataTypes.INTEGER,
+      start_date: DataTypes.STRING,
+      sessions_remaining: DataTypes.INTEGER,
     },
     {
       sequelize,
-      modelName: "Trainer",
+      modelName: "TrainerClient",
     }
   );
-  return Trainer;
+  return TrainerClient;
 };

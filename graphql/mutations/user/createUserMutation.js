@@ -1,6 +1,6 @@
-import userInputType from "../types/userInputType.js";
-import db from "../../models/index.js";
-import userType from "../types/userType.js";
+import userInputType from "../../types/userInputType.js";
+import db from "../../../models/index.js";
+import userType from "../../types/userType.js";
 import bcrypt from "bcrypt";
 
 const createUserMutationResolver = async (_, { user }, context) => {

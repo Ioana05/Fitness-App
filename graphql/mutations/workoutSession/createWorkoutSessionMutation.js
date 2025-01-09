@@ -1,6 +1,6 @@
-import db from "../../models/index.js";
-import workoutSessionType from "../types/workoutSessionType.js";
-import workoutSessionInputType from "../types/workoutSessionInputType.js";
+import db from "../../../models/index.js";
+import workoutSessionType from "../../types/workoutSessionType.js";
+import workoutSessionInputType from "../../types/workoutSessionInputType.js";
 
 const createWorkoutSessionMutationResolver = async (
   _,
