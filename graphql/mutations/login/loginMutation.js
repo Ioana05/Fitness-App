@@ -1,8 +1,8 @@
-import { JWT_SECRET } from '../../constants.js';
-import loginInputType from '../types/loginInputType.js';
-import loginResultType from '../types/loginResultType.js';
+import { JWT_SECRET } from '../../../constants.js';
+import loginInputType from '../../types/login/loginInputType.js';
+import loginResultType from '../../types/login/loginResultType.js';
 import jwt from 'jsonwebtoken';
-import db from '../../models/index.js';
+import db from '../../../models/index.js';
 import bcrypt from 'bcrypt';
 
 const loginMutationResolver = async (_, args) => {

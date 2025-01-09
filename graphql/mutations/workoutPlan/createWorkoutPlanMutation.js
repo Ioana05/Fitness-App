@@ -1,7 +1,7 @@
 import db from "../../../models/index.js";
-import workoutPlanType from "../../types/workoutPlanType.js";
+import workoutPlanType from "../../types/workoutPlan/workoutPlanType.js";
 import bcrypt from "bcrypt";
-import workoutPlanInputType from "../../types/workoutPlanInputType.js";
+import workoutPlanInputType from "../../types/workoutPlan/workoutPlanInputType.js";
 
 const createWorkoutPlanMutationResolver = async (
   _,

@@ -1,6 +1,6 @@
-import trainerInputType from "../../types/trainerInputType.js";
+import trainerInputType from "../../types/trainer/trainerInputType.js";
 import db from "../../../models/index.js";
-import trainerType from "../../types/trainerType.js";
+import trainerType from "../../types/trainer/trainerType.js";
 import bcrypt from "bcrypt";
 
 const createTrainerMutationResolver = async (_, { trainer }, context) => {

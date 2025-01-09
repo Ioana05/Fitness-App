@@ -1,7 +1,7 @@
 import graphql from "graphql";
 import db from "../../../models/index.js";
-import workoutPlanType from "../../types/workoutPlanType.js";
-import workoutPlanInputType from "../../types/workoutPlanInputType.js";
+import workoutPlanType from "../../types/workoutPlan/workoutPlanType.js";
+import workoutPlanInputType from "../../types/workoutPlan/workoutPlanInputType.js";
 
 const updateWorkoutPlanMutationResolver = async (_, args) => {
   const id = args.id;

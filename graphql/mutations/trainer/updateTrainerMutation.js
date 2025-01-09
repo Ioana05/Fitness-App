@@ -1,6 +1,6 @@
 import graphql from "graphql";
-import trainerInputType from "../../types/trainerInputType.js";
-import trainerType from "../../types/trainerType.js";
+import trainerInputType from "../../types/trainer/trainerInputType.js";
+import trainerType from "../../types/trainer/trainerType.js";
 import db from "../../../models/index.js";
 
 const updateTrainerMutationResolver = async (_, args) => {
