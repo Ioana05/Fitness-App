@@ -9,8 +9,8 @@ export default (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      User.hasOne(models.trainer);
-      User.hasMany(models.WorkoutSession);
+      User.hasOne(models.Trainer, { foreignKey: "user_id" });
+      User.hasMany(models.WorkoutSession, { foreignKey: "user_id" });
     }
   }
   User.init(

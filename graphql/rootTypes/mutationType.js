@@ -1,12 +1,17 @@
 import graphql from "graphql";
-import createUserMutation from "../mutations/createUserMutation.js";
-import updateUserMutation from "../mutations/updateUserMutation.js";
-import deleteUserMutation from "../mutations/deleteUserMutation.js";
+import createUserMutation from "../mutations/user/createUserMutation.js";
+import updateUserMutation from "../mutations/user/updateUserMutation.js";
+import deleteUserMutation from "../mutations/user/deleteUserMutation.js";
 import loginMutation from "../mutations/loginMutation.js";
-import createPostMutation from "../mutations/createPostMutation.js";
-import createTrainerMutation from "../mutations/createTrainerMutation.js";
-import createWorkoutPlanMutation from "../mutations/createWorkoutPlanMutation.js";
-import createWorkoutSessionMutation from "../mutations/createWorkoutSessionMutation.js";
+import createTrainerMutation from "../mutations/trainer/createTrainerMutation.js";
+import updateTrainerMutation from "../mutations/trainer/updateTrainerMutation.js";
+import createWorkoutPlanMutation from "../mutations/workoutPlan/createWorkoutPlanMutation.js";
+import deleteTrainerMutation from "../mutations/trainer/deleteTrainer.js";
+import updateWorkoutPlanMutation from "../mutations/workoutPlan/updateWorkoutPlan.js";
+import deleteWorkoutPlanMutation from "../mutations/workoutPlan/deleteWorkoutPlan.js";
+import createWorkoutSessionMutation from "../mutations/workoutSession/createWorkoutSessionMutation.js";
+import updateWorkoutSessionMutation from "../mutations/workoutSession/updateWorkoutSession.js";
+import deleteWorkoutSessionMutation from "../mutations/workoutSession/deleteWorkoutSession.js";
 
 // Define the Query type
 const queryType = new graphql.GraphQLObjectType({
@@ -17,9 +22,15 @@ const queryType = new graphql.GraphQLObjectType({
     deleteUser: deleteUserMutation,
     login: loginMutation,
     createTrainer: createTrainerMutation,
+    updateTrainer: updateTrainerMutation,
+    deleteTrainer: deleteTrainerMutation,
     createWorkoutPlan: createWorkoutPlanMutation,
-    createPost: createPostMutation,
+    updateWorkoutPlan: updateWorkoutPlanMutation,
+    deleteWorkoutPlan: deleteWorkoutPlanMutation,
+    // createPost: createPostMutation,
     createWorkoutSession: createWorkoutSessionMutation,
+    updateWorkoutSession: updateWorkoutSessionMutation,
+    deleteWorkoutSession: deleteWorkoutSessionMutation,
   },
 });
 
