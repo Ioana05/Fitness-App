@@ -1,6 +1,6 @@
 import { GraphQLInt } from "graphql";
-import db from "../../models/index.js";
-import workoutPlanType from "../types/workoutPlanType.js";
+import workoutPlanType from "../../types/workoutPlan/workoutPlanType.js";
+import db from "../../../models/index.js";
 
 const workoutPlanQueryResolver = async (_, { id }) => {
   const workoutPlan = await db.workoutPlan.findOne({

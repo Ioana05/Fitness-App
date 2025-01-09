@@ -1,6 +1,6 @@
 import { GraphQLInt } from "graphql";
-import workoutSessionType from "../types/workoutSessionType.js";
-import db from "../../models/index.js";
+import workoutSessionType from "../../types/workoutSession/workoutSessionType.js";
+import db from "../../../models/index.js";
 
 const workoutSessionQueryResolver = async (_, { id }) => {
   const workoutSession = await db.WorkoutSession.findOne({

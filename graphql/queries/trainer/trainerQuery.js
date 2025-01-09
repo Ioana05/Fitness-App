@@ -1,6 +1,6 @@
 import { GraphQLInt } from "graphql";
-import trainerType from "../types/trainerType.js";
-import db from "../../models/index.js";
+import trainerType from "../../types/trainer/trainerType.js";
+import db from "../../../models/index.js";
 
 const trainerQueryResolver = async (_, { id }) => {
   const trainer = await db.Trainer.findOne({
