@@ -1,11 +1,11 @@
 import { GraphQLEnumType } from "graphql";
 
-const availableType = new GraphQLEnumType({
-  name: "availableEnum",
+const availabilityEnumType = new GraphQLEnumType({
+  name: "availabilityEnum",
   values: {
     AVAILABLE: { value: "AVAILABLE" },
     UNAVAILABLE: { value: "UNAVAILABLE" },
   },
 });
 
-export default availableType;
+export default availabilityEnumType;
