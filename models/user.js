@@ -11,6 +11,7 @@ export default (sequelize, DataTypes) => {
     static associate(models) {
       User.hasOne(models.Trainer, { foreignKey: "user_id" });
       User.hasMany(models.WorkoutSession, { foreignKey: "user_id" });
+      User.hasMany(models.WorkoutPlan, { foreignKey: "client_id" });
     }
   }
   User.init(
@@ -20,7 +21,7 @@ export default (sequelize, DataTypes) => {
       age: DataTypes.INTEGER,
       gender: {
         type: DataTypes.ENUM,
-        values: ["male", "female"],
+        values: ["MALE", "FEMALE"],
       },
       email: DataTypes.STRING,
       password: DataTypes.INTEGER,

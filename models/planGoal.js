@@ -10,19 +10,19 @@ export default (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      PlanGoal.belongsTo(models.workoutPlan, { foreignKey: "workout_plan_id" });
+      PlanGoal.belongsTo(models.WorkoutPlan, { foreignKey: "workout_plan_id" });
     }
   }
   PlanGoal.init(
     {
       workout_plan_id: DataTypes.INTEGER,
       name: DataTypes.STRING,
-      goal_type: DataTypes.ENUM("weight", "measurement"),
+      goal_type: DataTypes.ENUM("WEIGHT", "MEASUREMENT"),
       measurement_type: DataTypes.STRING,
       target_value: DataTypes.DECIMAL,
       initial_value: DataTypes.DECIMAL,
       deadline: DataTypes.DATE,
-      status: DataTypes.ENUM("complete", "incomplete"),
+      status: DataTypes.ENUM("COMPLETE", "INCOMPLETE"),
     },
     {
       sequelize,

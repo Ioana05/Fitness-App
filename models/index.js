@@ -22,30 +22,28 @@ if (config.use_env_variable) {
   );
 }
 
-const models = await Promise.all(
-  fs
-    .readdirSync(__dirname)
-    .filter((file) => {
-      return (
-        file.indexOf(".") !== 0 && file !== __dirname,
-        file !== "index.js" &&
-          file.slice(-3) === ".js" &&
-          file.indexOf(".test.js") === -1
-      );
-    })
-    .map(async (file) => {
-      const module = await import(
-        pathToFileURL(path.join(__dirname, file)).href
-      );
-      return module.default(sequelize, Sequelize.DataTypes);
-    })
+// Fix the file filtering
+const modelFiles = fs.readdirSync(__dirname).filter((file) => {
+  return (
+    file.indexOf(".") !== 0 &&
+    file !== "index.js" &&
+    file.slice(-3) === ".js" &&
+    file.indexOf(".test.js") === -1
+  );
+});
+
+const db = {};
+
+// Load models
+await Promise.all(
+  modelFiles.map(async (file) => {
+    const module = await import(pathToFileURL(path.join(__dirname, file)).href);
+    const model = module.default(sequelize, Sequelize.DataTypes);
+    db[model.name] = model;
+  })
 );
 
-const db = models.reduce((acc, model) => {
-  acc[model.name] = model;
-  return acc;
-}, {});
-
+// Associate models
 Object.keys(db).forEach((modelName) => {
   if (db[modelName].associate) {
     db[modelName].associate(db);

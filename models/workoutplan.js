@@ -1,29 +1,48 @@
+// models/workoutPlan.js
 "use strict";
 import { Model } from "sequelize";
+
 export default (sequelize, DataTypes) => {
-  class workoutPlan extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
+  class WorkoutPlan extends Model {
     static associate(models) {
-      // define association here
-      workoutPlan.belongsTo(models.Trainer, { foreignKey: "trainer_id" });
+      WorkoutPlan.belongsTo(models.Trainer, {
+        foreignKey: "trainer_id",
+      });
+
+      WorkoutPlan.belongsTo(models.User, {
+        foreignKey: "client_id",
+        as: "client",
+      });
+
+      WorkoutPlan.hasMany(models.WorkoutDay, {
+        foreignKey: "workout_plan_id",
+      });
+
+      WorkoutPlan.hasMany(models.PlanGoal, {
+        foreignKey: "workout_plan_id",
+      });
     }
   }
-  workoutPlan.init(
+
+  WorkoutPlan.init(
     {
-      trainer_id: DataTypes.INTEGER,
-      client_id: DataTypes.INTEGER,
+      trainer_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      client_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
       name: DataTypes.STRING,
       start_date: DataTypes.DATE,
       end_date: DataTypes.DATE,
     },
     {
       sequelize,
-      modelName: "workoutPlan",
+      modelName: "WorkoutPlan",
     }
   );
-  return workoutPlan;
+
+  return WorkoutPlan;
 };
