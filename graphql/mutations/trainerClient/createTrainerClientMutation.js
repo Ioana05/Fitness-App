@@ -8,7 +8,7 @@ const createTrainerClientMutationResolver = async (
   context
 ) => {
   const createdTrainerClient = await db.TrainerClient.create({
-    client_id: trainerClient.user_id,
+    client_id: trainerClient.client_id,
     trainer_id: trainerClient.trainer_id,
     start_date: trainerClient.start_date,
     session_remaining: trainerClient.session_remaining,

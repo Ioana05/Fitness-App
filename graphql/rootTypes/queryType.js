@@ -8,6 +8,7 @@ import exerciseQueries from "../queries/exercise/index.js";
 import workoutDayQueries from "../queries/workoutDay/index.js";
 import planExerciseQueries from "../queries/planExercise/index.js";
 import sessionExerciseQueries from "../queries/sessionExercise/index.js";
+import trainerClient from "../queries/trainerClient/index.js";
 
 const queryType = new GraphQLObjectType({
   name: "Query",
@@ -20,6 +21,7 @@ const queryType = new GraphQLObjectType({
     ...workoutDayQueries,
     ...planExerciseQueries,
     ...sessionExerciseQueries,
+    ...trainerClient,
   },
 });
 
