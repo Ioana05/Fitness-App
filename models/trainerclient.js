@@ -9,7 +9,8 @@ export default (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      models.TrainerClient
+      TrainerClient.belongsTo(models.Trainer, { foreignKey: "trainer_id" });
+      TrainerClient.belongsTo(models.User, { foreignKey: "client_id" });
     }
   }
   TrainerClient.init(
@@ -17,7 +18,7 @@ export default (sequelize, DataTypes) => {
       trainer_id: DataTypes.INTEGER,
       client_id: DataTypes.INTEGER,
       start_date: DataTypes.STRING,
-      sessions_remaining: DataTypes.INTEGER,
+      session_remaining: DataTypes.INTEGER,
     },
     {
       sequelize,

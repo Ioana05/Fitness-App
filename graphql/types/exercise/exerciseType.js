@@ -1,8 +1,4 @@
-import {
-  GraphQLObjectType,
-  GraphQLInt,
-  GraphQLString,
-} from "graphql";
+import { GraphQLObjectType, GraphQLInt, GraphQLString } from "graphql";
 import exerciseDifficultyEnumType from "./exerciseDifficultyEnumType.js";
 
 const exerciseType = new GraphQLObjectType({
@@ -10,10 +6,10 @@ const exerciseType = new GraphQLObjectType({
   fields: {
     id: { type: GraphQLInt },
     name: { type: GraphQLString },
-    muscleGroup: { 
+    muscleGroup: {
       type: GraphQLString,
       resolve: (exercise) => exercise.muscle_group,
-     },
+    },
     difficultyLevel: {
       type: exerciseDifficultyEnumType,
       resolve: (exercise) => exercise.difficulty_level,

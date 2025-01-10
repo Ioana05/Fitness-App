@@ -31,7 +31,7 @@ module.exports = {
       start_date: {
         type: Sequelize.DATE,
       },
-      sessions_remaining: {
+      session_remaining: {
         type: Sequelize.INTEGER,
       },
       createdAt: {

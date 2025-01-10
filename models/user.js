@@ -12,6 +12,7 @@ export default (sequelize, DataTypes) => {
       User.hasOne(models.Trainer, { foreignKey: "user_id" });
       User.hasMany(models.WorkoutSession, { foreignKey: "user_id" });
       User.hasMany(models.WorkoutPlan, { foreignKey: "client_id" });
+      User.hasMany(models.TrainerClient, { foreignKey: "client_id" });
     }
   }
   User.init(

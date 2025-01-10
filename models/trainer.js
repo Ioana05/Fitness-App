@@ -11,6 +11,7 @@ export default (sequelize, DataTypes) => {
       // define association here
       Trainer.belongsTo(models.User, { foreignKey: "user_id" });
       Trainer.hasMany(models.WorkoutPlan, { foreignKey: "trainer_id" });
+      Trainer.hasMany(models.TrainerClient, { foreignKey: "trainer_id" });
     }
   }
   Trainer.init(

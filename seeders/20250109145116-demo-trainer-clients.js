@@ -27,7 +27,7 @@ module.exports = {
             trainer_id: trainer.id,
             client_id: clientRows[i].id,
             start_date: faker.date.past(),
-            sessions_remaining: faker.number.int({ min: 0, max: 20 }),
+            session_remaining: faker.number.int({ min: 0, max: 20 }),
             createdAt: new Date(),
             updatedAt: new Date(),
           });
