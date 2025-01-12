@@ -20,7 +20,7 @@ const deleteExerciseMutationResolver = async (
 
     await exercise.destroy();
 
-    return true;
+    return exercise;
 }
 
 const deleteExerciseMutation = {

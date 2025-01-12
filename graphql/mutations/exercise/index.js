@@ -3,7 +3,7 @@ import updateExerciseMutation from "./updateExerciseMutation.js";
 import deleteExerciseMutation from "./deleteExerciseMutation.js";
 
 export default {
-    createExerciseMutation,
-    updateExerciseMutation,
-    deleteExerciseMutation,
+    createExercise: createExerciseMutation,
+    updateExercise: updateExerciseMutation,
+    deleteExercise: deleteExerciseMutation,
 };
