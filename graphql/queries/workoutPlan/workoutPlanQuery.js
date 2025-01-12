@@ -3,7 +3,7 @@ import workoutPlanType from "../../types/workoutPlan/workoutPlanType.js";
 import db from "../../../models/index.js";
 
 const workoutPlanQueryResolver = async (_, { id }) => {
-  const workoutPlan = await db.workoutPlan.findOne({
+  const workoutPlan = await db.WorkoutPlan.findOne({
     where: {
       id,
     },
