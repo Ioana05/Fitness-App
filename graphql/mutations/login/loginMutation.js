@@ -8,7 +8,7 @@ import bcrypt from 'bcrypt';
 const loginMutationResolver = async (_, args) => {
     const user = await db.User.findOne({
         where: {
-            name: args.credentials.username,
+            email: args.credentials.username,
         }
     });
 
