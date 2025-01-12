@@ -42,7 +42,7 @@ module.exports = {
             precision: 0.1,
           }),
           deadline: faker.date.future(),
-          status: faker.helpers.arrayElement(["COMPLETE", "INCLOMPLETE"]),
+          status: faker.helpers.arrayElement(["COMPLETE", "INCOMPLETE"]),
           createdAt: new Date(),
           updatedAt: new Date(),
         });
