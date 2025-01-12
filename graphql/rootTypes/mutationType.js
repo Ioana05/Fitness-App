@@ -8,6 +8,7 @@ import trainerClientMutations from "../mutations/trainerClient/index.js";
 import exerciseMutations from "../mutations/exercise/index.js";
 import planGoalMutations from "../mutations/planGoal/index.js";
 import workoutDayMutations from "../mutations/workoutDay/index.js";
+import planExerciseMutations from "../mutations/planExercise/index.js";
 
 // Define the Query type
 const queryType = new graphql.GraphQLObjectType({
@@ -21,6 +22,7 @@ const queryType = new graphql.GraphQLObjectType({
     ...exerciseMutations,
     ...planGoalMutations,
     ...workoutDayMutations,
+    ...planExerciseMutations,
   },
 });
 
