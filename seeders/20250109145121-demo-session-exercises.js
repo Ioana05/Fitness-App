@@ -31,6 +31,16 @@ module.exports = {
         for (let i = 0; i < numExercises; i++) {
           const selectedExercise = faker.helpers.arrayElement(exercises);
 
+          const notes = faker.helpers.arrayElement([
+            "Increased weight from last session",
+            "Felt strong today",
+            "Need to improve form",
+            "Reduced weight due to fatigue",
+            "Need to increase weights next time",
+            "Focused on form",
+            null,
+          ]);
+
           sessionExercises.push({
             workout_session_id: parseInt(session.id, 10), // Ensure integer
             exercise_id: parseInt(selectedExercise.id, 10), // Ensure integer
@@ -41,13 +51,7 @@ module.exports = {
                 .float({ min: 5, max: 100, precision: 0.5 })
                 .toFixed(2)
             ), // Ensure proper float format
-            notes: faker.helpers.arrayElement([
-              "Increased weight from last session",
-              "Felt strong today",
-              "Need to improve form",
-              "Reduced weight due to fatigue",
-              null,
-            ]),
+            notes: notes,
             createdAt: new Date(),
             updatedAt: new Date(),
           });
