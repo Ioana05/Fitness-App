@@ -8,14 +8,14 @@ const createWorkoutPlanMutationResolver = async (
   { workoutPlan },
   context
 ) => {
-  const createdworkoutPlan = await db.workoutPlan.create({
+  console.log(db);
+  const createdworkoutPlan = await db.WorkoutPlan.create({
     trainer_id: workoutPlan.trainer_id,
     client_id: workoutPlan.client_id,
     name: workoutPlan.name,
     start_date: workoutPlan.start_date,
     end_date: workoutPlan.end_date,
   });
-
   return createdworkoutPlan;
 };
 
