@@ -2,6 +2,7 @@ import graphql from "graphql";
 import userInputType from "../../types/user/userInputType.js";
 import userType from "../../types/user/userType.js";
 import db from "../../../models/index.js";
+import bcrypt from "bcrypt";
 
 const updateUserMutationResolver = async (_, args, context) => {
   const id = args.id;
@@ -22,9 +23,16 @@ const updateUserMutationResolver = async (_, args, context) => {
     return false;
   }
 
+  const { password, ...otherFields } = args.user;
+
   const updatedUser = await user.update({
-    ...args.user,
+    ...otherFields,
   });
+
+  if (password) {
+    const hashedpassword = await bcrypt.hash(password, 5);
+    await user.update({ password: hashedpassword });
+  }
 
   return updatedUser;
 };
