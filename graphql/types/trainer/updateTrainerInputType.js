@@ -8,10 +8,9 @@ import {
 } from "graphql";
 import availableType from "./availableType.js";
 
-const trainerInputType = new GraphQLInputObjectType({
-  name: "TrainerInput",
+const updateTrainerInputType = new GraphQLInputObjectType({
+  name: "UpdateTrainerInput",
   fields: {
-    user_id: { type: GraphQLInt },
     specialization: { type: GraphQLString },
     years_experience: { type: GraphQLInt },
     hourly_rate: { type: GraphQLFloat },
@@ -19,4 +18,4 @@ const trainerInputType = new GraphQLInputObjectType({
   },
 });
 
-export default trainerInputType;
+export default updateTrainerInputType;
