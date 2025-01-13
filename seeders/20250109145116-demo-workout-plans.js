@@ -27,11 +27,11 @@ module.exports = {
 
       const startDate = faker.date.between({
         from: rel.start_date,
-        to: "2025-1-10",
+        to: "2026-1-10",
       });
       const endDate = faker.date.between({
         from: startDate,
-        to: "2025-1-10",
+        to: "2026-1-10",
       });
 
       return {

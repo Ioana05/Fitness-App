@@ -39,7 +39,7 @@ module.exports = {
         const maxDate = trainerCreatedAt > clientCreatedAt ? trainerCreatedAt : clientCreatedAt;
         const startDate = faker.date.between({
           from: maxDate,
-          to: "2025-1-10",
+          to: "2026-1-10",
         });
 
         trainerClients.push({
