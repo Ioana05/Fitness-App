@@ -11,6 +11,7 @@ import sessionExerciseQueries from "../queries/sessionExercise/index.js";
 import trainerClient from "../queries/trainerClient/index.js";
 import planGoalQueries from "../queries/planGoal/index.js";
 import sessionAnalysisQueries from "../queries/sessionAnalysis/index.js";
+import trainerDashboardQueries from "../queries/trainerDashboard/index.js";
 
 const queryType = new GraphQLObjectType({
   name: "Query",
@@ -26,6 +27,7 @@ const queryType = new GraphQLObjectType({
     ...trainerClient,
     ...planGoalQueries,
     ...sessionAnalysisQueries,
+    ...trainerDashboardQueries,
   },
 });
 
