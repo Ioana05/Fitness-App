@@ -2,11 +2,11 @@ import { GraphQLBoolean, GraphQLInt } from "graphql";
 import db from "../../../models/index.js";
 
 const deleteWorkoutSessionResolver = async (_, args, context) => {
-  //   const isAuthorized = !!context.user_id;
+  const isAuthorized = !!context.user_id;
 
-  // if(!isAuthorized) {
-  //     return false;
-  // }
+  if (!isAuthorized) {
+    return false;
+  }
 
   const workoutSession = await db.WorkoutSession.findOne({
     where: {
@@ -16,6 +16,11 @@ const deleteWorkoutSessionResolver = async (_, args, context) => {
 
   if (!workoutSession) {
     return false;
+  }
+
+  const isSelf = context.user_id === workoutSession.user_id;
+  if (!isSelf) {
+    throw new Error("Permission denied");
   }
 
   await workoutSession.destroy();
