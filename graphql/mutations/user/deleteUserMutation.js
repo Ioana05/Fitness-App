@@ -2,11 +2,12 @@ import { GraphQLBoolean, GraphQLInt } from "graphql";
 import db from "../../../models/index.js";
 
 const deleteUserResolver = async (_, args, context) => {
+  console.log(context);
   const isAuthorized = !!context.user_id;
 
-  // if(!isAuthorized) {
-  //     return false;
-  // }
+  if (!isAuthorized) {
+    return false;
+  }
 
   const user = await db.User.findOne({
     where: {
@@ -16,6 +17,11 @@ const deleteUserResolver = async (_, args, context) => {
 
   if (!user) {
     return false;
+  }
+
+  const isSelf = context.user_id === args.id;
+  if (!isSelf) {
+    throw new Error("Permission denied");
   }
 
   await user.destroy();

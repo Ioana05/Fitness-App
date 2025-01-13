@@ -5,7 +5,7 @@ import bcrypt from "bcrypt";
 
 const createTrainerMutationResolver = async (_, { trainer }, context) => {
   const createdTrainer = await db.Trainer.create({
-    user_id: trainer.user_id,
+    user_id: context.user_id,
     specialization: trainer.specialization,
     years_experience: trainer.years_experience,
     hourly_rate: trainer.hourly_rate,

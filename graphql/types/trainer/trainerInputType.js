@@ -11,7 +11,6 @@ import availableType from "./availableType.js";
 const trainerInputType = new GraphQLInputObjectType({
   name: "TrainerInput",
   fields: {
-    user_id: { type: GraphQLInt },
     specialization: { type: GraphQLString },
     years_experience: { type: GraphQLInt },
     hourly_rate: { type: GraphQLFloat },

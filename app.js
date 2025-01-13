@@ -15,7 +15,6 @@ const app = express();
 
 const jwtMiddleware = (req, res, next) => {
   const token = req.headers.authorization?.replace("Bearer ", "");
-
   if (!token) {
     next();
     return;
@@ -23,7 +22,6 @@ const jwtMiddleware = (req, res, next) => {
 
   try {
     const decodedPayload = jwt.verify(token, JWT_SECRET);
-    console.log("decodedPayload", decodedPayload);
     req.user_id = decodedPayload.user_id;
     next();
   } catch (e) {
@@ -42,9 +40,10 @@ app.all(
   createHandler({
     schema: schema,
     context: (req) => {
-      return {
+      const context = {
         user_id: req.raw.user_id,
       };
+      return context;
     },
   })
 );

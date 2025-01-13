@@ -12,9 +12,9 @@ const updateTrainerMutationResolver = async (_, args) => {
     },
   });
 
-  //   if (!trainer) {
-  //     return false;
-  //   }
+  if (!trainer) {
+    return false;
+  }
 
   const updatedTrainer = await trainer.update({
     ...args.trainer,
