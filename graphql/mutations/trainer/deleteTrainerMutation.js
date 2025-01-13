@@ -7,11 +7,6 @@ const deleteTrainerResolver = async (_, args, context) => {
   if (!isAuthorized) {
     return false;
   }
-  console.log(args);
-  const isSelf = context.user_id === args.user.id;
-  if (!isSelf) {
-    throw new Error("Permission denied");
-  }
 
   const trainer = await db.Trainer.findOne({
     where: {
@@ -21,6 +16,11 @@ const deleteTrainerResolver = async (_, args, context) => {
 
   if (!trainer) {
     return false;
+  }
+
+  const isSelf = context.user_id === trainer.user_id;
+  if (!isSelf) {
+    throw new Error("Permission denied");
   }
 
   await trainer.destroy();
