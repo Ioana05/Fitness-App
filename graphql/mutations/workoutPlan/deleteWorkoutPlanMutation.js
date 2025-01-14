@@ -1,5 +1,6 @@
 import { GraphQLBoolean, GraphQLInt } from "graphql";
 import db from "../../../models/index.js";
+import workoutPlanType from "../../types/workoutPlan/workoutPlanType.js";
 
 const deleteWorkoutPlanResolver = async (_, args, context) => {
   //   const isAuthorized = !!context.user_id;
@@ -8,22 +9,28 @@ const deleteWorkoutPlanResolver = async (_, args, context) => {
   //     return false;
   // }
 
-  const workoutPlan = await db.workoutPlan.findOne({
+  const workoutPlan = await db.WorkoutPlan.findOne({
     where: {
       id: args.id,
     },
   });
 
   if (!workoutPlan) {
-    return false;
+    throw new Error("Workout plan not found");
+  }
+
+  const userId = context.user_id;
+   
+  if (workoutPlan.client_id !== userId) {
+    throw new Error("You are not authorized to perform this action");
   }
 
   await workoutPlan.destroy();
-  return true;
+  return workoutPlan;
 };
 
 const deleteWorkoutPlanMutation = {
-  type: GraphQLBoolean,
+  type: workoutPlanType,
   args: {
     id: { type: GraphQLInt },
   },
