@@ -12,6 +12,7 @@ import trainerClient from "../queries/trainerClient/index.js";
 import planGoalQueries from "../queries/planGoal/index.js";
 import sessionAnalysisQueries from "../queries/sessionAnalysis/index.js";
 import trainerDashboardQueries from "../queries/trainerDashboard/index.js";
+import clientTrainerRequestQueries from "../queries/clientTrainerRequest/index.js";
 
 const queryType = new GraphQLObjectType({
   name: "Query",
@@ -28,6 +29,7 @@ const queryType = new GraphQLObjectType({
     ...planGoalQueries,
     ...sessionAnalysisQueries,
     ...trainerDashboardQueries,
+    ...clientTrainerRequestQueries,
   },
 });
 

@@ -11,6 +11,7 @@ import DateScalar from "../../scalars/dateScalar.js";
 const clientTrainerRequestType = new GraphQLObjectType({
   name: "ClientTrainerRequest",
   fields: {
+    id: { type: GraphQLInt },
     client_id: { type: GraphQLInt },
     trainer_id: { type: GraphQLInt },
     status: { type: requestStatusEnumType },
