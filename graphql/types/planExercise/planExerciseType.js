@@ -7,10 +7,16 @@ const planExerciseType = new GraphQLObjectType({
     fields: {
         id: { type: GraphQLInt },
         workout_day: {
-            type: workoutDayType
+            type: workoutDayType,
+            resolve: async (parent, args, context) => {
+                return await parent.getWorkoutDay();
+            }
         },
         exercise: {
-            type: exerciseType
+            type: exerciseType,
+            resolve: async (parent, args, context) => {
+                return await parent.getExercise();
+            }
         },
         sets: { type: GraphQLInt },
         reps_target: { type: GraphQLInt },

@@ -10,6 +10,12 @@ export default (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       WorkoutSession.belongsTo(models.User, { foreignKey: "user_id" });
+      WorkoutSession.belongsTo(models.WorkoutDay, {
+        foreignKey: "workout_day_id",
+      });
+      WorkoutSession.hasMany(models.SessionExercise, {
+        foreignKey: "workout_session_id",
+      });
     }
   }
   WorkoutSession.init(

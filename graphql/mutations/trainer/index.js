@@ -1,9 +1,11 @@
-import createTrainerMutation from "./createTrainerMutation.js";
 import updateTrainerMutation from "./updateTrainerMutation.js";
-import deleteTrainerMutation from "./deleteTrainerMutation.js";
+import unregisterAsTrainerMutation from "./unregisterAsTrainerMutation.js";
+import registerAsTrainerMutation from "./registerAsTrainerMutation.js";
+import manageAssociationMutation from "./manageAssociationMutation.js";
 
 export default {
-    createTrainer: createTrainerMutation,
-    updateTrainer: updateTrainerMutation,
-    deleteTrainer: deleteTrainerMutation,
-}
+  registerAsTrainer: registerAsTrainerMutation,
+  updateTrainer: updateTrainerMutation,
+  unregisterAsTrainer: unregisterAsTrainerMutation,
+  manageAssociation: manageAssociationMutation,
+};

@@ -14,19 +14,24 @@ module.exports = {
     const planGoals = [];
 
     planRows.forEach((plan) => {
-      // Create 2-3 goals per plan
-      const numGoals = faker.number.int({ min: 2, max: 3 });
+      const numGoals = faker.number.int({ min: 1, max: 3 });
       for (let i = 0; i < numGoals; i++) {
         const isWeight = faker.datatype.boolean();
+        const name = faker.helpers.arrayElement([
+          "Weight Loss",
+          "Muscle Gain",
+          "Body Fat Reduction",
+          "Strength Increase",
+          "Endurance Improvement",
+          "Flexibility Increase",
+          "Cardiovascular Health",
+          "Nutrition Improvement",
+          "Mental Health",
+        ]);
+
         planGoals.push({
           workout_plan_id: plan.id,
-          name: faker.helpers.arrayElement([
-            "Weight Loss",
-            "Muscle Gain",
-            "Body Fat Reduction",
-            "Strength Increase",
-            "Endurance Improvement",
-          ]),
+          name: name,
           goal_type: isWeight ? "WEIGHT" : "MEASUREMENT",
           measurement_type: isWeight
             ? "kg"
@@ -42,7 +47,7 @@ module.exports = {
             precision: 0.1,
           }),
           deadline: faker.date.future(),
-          status: faker.helpers.arrayElement(["COMPLETE", "INCLOMPLETE"]),
+          status: faker.helpers.arrayElement(["COMPLETE", "INCOMPLETE"]),
           createdAt: new Date(),
           updatedAt: new Date(),
         });
