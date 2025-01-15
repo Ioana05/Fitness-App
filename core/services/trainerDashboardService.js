@@ -103,7 +103,7 @@ class TrainerDashboardService {
       activeClients: activeClients.length,
       earnedRevenue,
       projectedRevenue,
-      averageClientRetention: avgRetention,
+      averageClientRetention: avgRetention || 0,
     };
   }
 
