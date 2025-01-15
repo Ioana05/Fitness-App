@@ -1,13 +1,13 @@
-import { GraphQLInputObjectType, GraphQLInt, GraphQLString } from "graphql";
+import { GraphQLInputObjectType, GraphQLInt, GraphQLString, GraphQLNonNull } from "graphql";
 import exerciseDifficultyEnumType from "./exerciseDifficultyEnumType.js";
 
 const exerciseInputType = new GraphQLInputObjectType({
   name: "ExerciseInput",
   fields: {
-    name: { type: GraphQLString },
-    muscleGroup: { type: GraphQLString },
-    difficultyLevel: { type: exerciseDifficultyEnumType },
-    instructions: { type: GraphQLString },
+    name: { type: new GraphQLNonNull(GraphQLString) },
+    muscleGroup: { type: new GraphQLNonNull(GraphQLString) },
+    difficultyLevel: { type: new GraphQLNonNull(exerciseDifficultyEnumType) },
+    instructions: { type: new GraphQLNonNull(GraphQLString) },
   },
 });
 
