@@ -1,11 +1,12 @@
 import { GraphQLBoolean, GraphQLInt } from "graphql";
 import db from "../../../models/index.js";
+import workoutSessionType from "../../types/workoutSession/workoutSessionType.js";
 
 const deleteWorkoutSessionResolver = async (_, args, context) => {
   const isAuthorized = !!context.user_id;
 
   if (!isAuthorized) {
-    return false;
+    throw new Error("You are not authorized to perform this action!");
   }
 
   const workoutSession = await db.WorkoutSession.findOne({
@@ -15,7 +16,7 @@ const deleteWorkoutSessionResolver = async (_, args, context) => {
   });
 
   if (!workoutSession) {
-    return false;
+    throw new Error("Workout session not found");
   }
 
   const isSelf = context.user_id === workoutSession.user_id;
@@ -24,11 +25,11 @@ const deleteWorkoutSessionResolver = async (_, args, context) => {
   }
 
   await workoutSession.destroy();
-  return true;
+  return workoutSession;
 };
 
 const deleteWorkoutSessionMutation = {
-  type: GraphQLBoolean,
+  type: workoutSessionType,
   args: {
     id: { type: GraphQLInt },
   },

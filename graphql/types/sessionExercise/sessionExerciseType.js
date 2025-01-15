@@ -6,17 +6,6 @@ const sessionExerciseType = new GraphQLObjectType({
     name: "SessionExercise",
     fields: {
         id: { type: GraphQLInt },
-        workoutSession: {
-            type: workoutSessionType,
-            resolve: async (sessionExercise) => {
-                // If the workout session is already loaded
-                if (sessionExercise.WorkoutSession) {
-                    return sessionExercise.WorkoutSession;
-                }
-                // If we need to load it
-                return await sessionExercise.getWorkoutSession();
-            }
-        },
         exercise: {
             type: exerciseType,
             resolve: async (sessionExercise) => {
