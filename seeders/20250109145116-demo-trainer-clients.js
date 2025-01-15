@@ -13,8 +13,8 @@ module.exports = {
       SELECT id, createdAt 
       FROM Users 
       WHERE id NOT IN (
-        SELECT user_id 
-        FROM Trainers
+      SELECT COALESCE(user_id, -1) 
+      FROM Trainers
       ) 
       ORDER BY RANDOM();
       `
@@ -30,13 +30,16 @@ module.exports = {
       const trainerCreatedAt = new Date(trainer.createdAt);
       const numberOfClients = faker.number.int({ min: 0, max: 4 });
       const clients = clientRows
-      .filter((client) => !clientsUsed.includes(client.id))
-      .sort(() => 0.5 - Math.random())
-      .slice(0, numberOfClients);
+        .filter((client) => !clientsUsed.includes(client.id))
+        .sort(() => 0.5 - Math.random())
+        .slice(0, numberOfClients);
 
       clients.forEach((client) => {
         const clientCreatedAt = new Date(client.createdAt);
-        const maxDate = trainerCreatedAt > clientCreatedAt ? trainerCreatedAt : clientCreatedAt;
+        const maxDate =
+          trainerCreatedAt > clientCreatedAt
+            ? trainerCreatedAt
+            : clientCreatedAt;
         const startDate = faker.date.between({
           from: maxDate,
           to: "2026-1-10",

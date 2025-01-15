@@ -12,9 +12,9 @@ const updateTrainerMutationResolver = async (_, args, context) => {
     },
   });
 
-    if (!trainer) {
-      return null;
-    }
+  if (!trainer) {
+    return null;
+  }
 
   // filter out null values
   const trainerValues = Object.keys(args.trainer).reduce((acc, key) => {

@@ -3,14 +3,14 @@ import db from "../../../models/index.js";
 import workoutDayType from "../../types/workoutDay/workoutDayType.js";
 
 const workoutDaysQueryResolver = async () => {
-    const workoutDays = await db.WorkoutDay.findAll();
+  const workoutDays = await db.WorkoutDay.findAll();
 
-    return workoutDays;
-}
+  return workoutDays;
+};
 
 const workoutDaysQuery = {
-    type: new GraphQLList(workoutDayType),
-    resolve: workoutDaysQueryResolver,
+  type: new GraphQLList(workoutDayType),
+  resolve: workoutDaysQueryResolver,
 };
 
 export default workoutDaysQuery;

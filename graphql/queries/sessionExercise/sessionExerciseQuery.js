@@ -3,25 +3,26 @@ import sessionExerciseType from "../../types/sessionExercise/sessionExerciseType
 import db from "../../../models/index.js";
 
 const sessionExerciseQueryResolver = async (_, { id }) => {
-    const sessionExercise = await db.SessionExercise.findOne({
-        where: {
-        id,
-        },
-    });
-    
-    if (!sessionExercise) {
-        return null;
-    }
-    
-    return sessionExercise;
-}
+  console.log(_);
+  const sessionExercise = await db.SessionExercise.findOne({
+    where: {
+      id,
+    },
+  });
+
+  if (!sessionExercise) {
+    return null;
+  }
+
+  return sessionExercise;
+};
 
 const sessionExerciseQuery = {
-    type: sessionExerciseType,
-    args: {
-        id: { type: GraphQLInt },
-    },
-    resolve: sessionExerciseQueryResolver,
+  type: sessionExerciseType,
+  args: {
+    id: { type: GraphQLInt },
+  },
+  resolve: sessionExerciseQueryResolver,
 };
 
 export default sessionExerciseQuery;
