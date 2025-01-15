@@ -1,0 +1,21 @@
+import {
+    GraphQLInputObjectType,
+    GraphQLInt,
+    GraphQLString,
+    GraphQLFloat,
+} from "graphql";
+import workoutSessionType from "../workoutSession/workoutSessionType.js";
+import exerciseType from "../exercise/exerciseType.js";
+
+const sessionExerciseWorkoutUpdateInputType = new GraphQLInputObjectType({
+  name: "SessionExerciseWorkoutUpdateInput",
+  fields: {
+    exerciseId: { type: GraphQLInt },
+    setsCompleted: { type: GraphQLInt },
+    repsCompleted: { type: GraphQLInt },
+    weight: { type: GraphQLFloat },
+    notes: { type: GraphQLString },
+  },
+});
+
+export default sessionExerciseWorkoutUpdateInputType;
