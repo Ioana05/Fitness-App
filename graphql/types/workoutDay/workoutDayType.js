@@ -1,5 +1,6 @@
-import { GraphQLObjectType, GraphQLInt, GraphQLString } from "graphql";
+import { GraphQLObjectType, GraphQLInt, GraphQLString, GraphQLList } from "graphql";
 import workoutPlanType from "../workoutPlan/workoutPlanType.js";
+import planExerciseType from "../planExercise/planExerciseType.js";
 
 const workoutDayType = new GraphQLObjectType({
   name: "WorkoutDay",
@@ -28,6 +29,17 @@ const workoutDayType = new GraphQLObjectType({
       type: GraphQLString,
       resolve: (workoutDay) => workoutDay.instructions,
     },
+    exercises: {  
+      type: new GraphQLList(planExerciseType),
+      resolve: async (workoutDay) => {
+        // If the exercises are already loaded
+        if (workoutDay.PlanExercises) {
+          return workoutDay.PlanExercises;
+        }
+        // If we need to load them
+        return await workoutDay.getPlanExercises();
+      },
+    }
   },
 });
 

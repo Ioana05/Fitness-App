@@ -87,8 +87,6 @@ const updatePlanGoalMutationResolver = async (_, { id, planGoal }, context) => {
     {}
   );
 
-  console.log(planGoalData);
-
   await existingGoal.update(planGoalData);
 
   return existingGoal;

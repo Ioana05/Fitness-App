@@ -1,14 +1,13 @@
-import { GraphQLInputObjectType, GraphQLString, GraphQLInt } from "graphql";
+import { GraphQLInputObjectType, GraphQLString, GraphQLInt, GraphQLNonNull } from "graphql";
 
 const planExerciseInputType = new GraphQLInputObjectType({
     name: "PlanExerciseInput",
     fields: {
-        workoutDayId: { type: GraphQLInt },
-        exerciseId: { type: GraphQLInt },
-        sets: { type: GraphQLInt },
-        repsTarget: { type: GraphQLInt },
-        restSeconds: { type: GraphQLInt },
-        orderInWorkout: { type: GraphQLInt },
+        exerciseId: { type: new GraphQLNonNull(GraphQLInt) },
+        sets: { type: new GraphQLNonNull(GraphQLInt) },
+        repsTarget: { type: new GraphQLNonNull(GraphQLInt) },
+        restSeconds: { type: new GraphQLNonNull(GraphQLInt) },
+        orderInWorkout: { type: new GraphQLNonNull(GraphQLInt) },
     },
 });
 

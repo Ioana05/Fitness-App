@@ -6,12 +6,6 @@ const planExerciseType = new GraphQLObjectType({
     name: "PlanExercise",
     fields: {
         id: { type: GraphQLInt },
-        workout_day: {
-            type: workoutDayType,
-            resolve: async (parent, args, context) => {
-                return await parent.getWorkoutDay();
-            }
-        },
         exercise: {
             type: exerciseType,
             resolve: async (parent, args, context) => {
