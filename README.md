@@ -1,4 +1,4 @@
-# Fitness-App
+# Fitness-App🏋🏻‍♂️
 ![Untitled diagram-2025-03-03-150552](https://github.com/user-attachments/assets/13cf8392-9065-4355-9348-cc9d3ead2376)
 
 
